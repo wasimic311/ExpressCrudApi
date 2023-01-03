@@ -4,18 +4,22 @@ require('dotenv/config');
 mongoose.set('strictQuery', true);
 const app = express();
 
+//Import Routes
 
+const postsRoute = require('./routes/posts');
+
+app.use('/posts', postsRoute);
 
 //Routes
 app.get('/', (req, res) => {
 
-    res.send('Hello world');
+    res.send('Home');
 });
 
-app.get('/posts', (req, res) => {
 
-    res.send('Posts');
-});
+
+
+
 
 //Connect to DB
 mongoose.connect(process.env.DB_CONNECTION, () => {
