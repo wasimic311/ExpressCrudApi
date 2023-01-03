@@ -1,11 +1,15 @@
 const express = require('express');
+const app = express();
 const mongoose = require('mongoose');
+const bodyParser = require('body-parser');
 require('dotenv/config');
 mongoose.set('strictQuery', true);
-const app = express();
+
+
+//Middelware
+app.use(bodyParser.json())
 
 //Import Routes
-
 const postsRoute = require('./routes/posts');
 
 app.use('/posts', postsRoute);
